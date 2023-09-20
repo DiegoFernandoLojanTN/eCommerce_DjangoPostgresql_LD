@@ -109,6 +109,11 @@ ul, ol {
   color: #FFF;
 }
 
+/* Aplica un estilo personalizado para quitar el subrayado */
+.list-menu li a {
+  text-decoration: none;
+}
+
 
 /* Agrega estilos personalizados para que el botón ocupe todo el ancho */
 .btn-full-width {
