@@ -109,6 +109,12 @@ ul, ol {
   color: #FFF;
 }
 
+
+/* Agrega estilos personalizados para que el botón ocupe todo el ancho */
+.btn-full-width {
+  width: 100%;
+}
+
 /*----------------------------*\
 	Inputs
 \*----------------------------*/
@@ -445,6 +451,68 @@ textarea.input {
   color: #D10024;
   margin-right: 5px;
 }
+
+.btn-custom-color {
+  background-color: #D10024;
+  display: inline-block;
+  border-radius: 40px;
+  text-transform: uppercase;
+  border: none;
+}
+
+.btn-custom-color:hover{
+  display: inline-block;
+  background-color: #D10024;
+  border: none;
+  border-radius: 40px;
+  color: #FFF;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+}
+
+
+
+.btn-custom-pagination ul.pagination {
+  margin: 0;
+  padding: 0;
+}
+
+.btn-custom-pagination ul.pagination li.page-item {
+  margin-right: 10px; /* Espacio entre elementos */
+  list-style: none; /* Elimina los puntos de lista */
+}
+
+.btn-custom-pagination ul.pagination li.page-item:last-child {
+  margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+.btn-custom-pagination ul.pagination li.page-item.active a.page-link,
+.btn-custom-pagination ul.pagination li.page-item a.page-link {
+  background-color: #D10024;
+  display: inline-block;
+  border-radius: 40px;
+
+  border: none;
+  color: #FFF;
+  font-weight: 700;
+  text-align: center;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+}
+
+.btn-custom-pagination ul.pagination li.page-item.disabled a.page-link {
+  background-color: #D10024;
+  border: none;
+  border-radius: 40px;
+  color: #FFF;
+
+  font-weight: 700;
+  text-align: center;
+}
+
 
 /*----------------------------*\
 	Logo
