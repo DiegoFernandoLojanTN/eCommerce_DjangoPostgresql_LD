@@ -542,7 +542,7 @@ textarea.input {
 \*----------------------------*/
 
 .header-search {
-  padding: 15px 0px;
+  padding: 15px 1px;
 }
 
 .header-search form {
@@ -555,13 +555,13 @@ textarea.input {
 }
 
 .header-search form .input {
-  width: calc(100% - 260px);
+  width: calc(90% - 260px);
   margin-right: -4px;
 }
 
 .header-search form .search-btn {
   height: 40px;
-  width: 70px;
+  width: 80px;
   background: #D10024;
   color: #FFF;
   font-weight: 700;

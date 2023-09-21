@@ -109,6 +109,17 @@ ul, ol {
   color: #FFF;
 }
 
+/* Aplica un estilo personalizado para quitar el subrayado */
+.list-menu li a {
+  text-decoration: none;
+}
+
+
+/* Agrega estilos personalizados para que el botón ocupe todo el ancho */
+.btn-full-width {
+  width: 100%;
+}
+
 /*----------------------------*\
 	Inputs
 \*----------------------------*/
@@ -446,6 +457,68 @@ textarea.input {
   margin-right: 5px;
 }
 
+.btn-custom-color {
+  background-color: #D10024;
+  display: inline-block;
+  border-radius: 40px;
+  text-transform: uppercase;
+  border: none;
+}
+
+.btn-custom-color:hover{
+  display: inline-block;
+  background-color: #D10024;
+  border: none;
+  border-radius: 40px;
+  color: #FFF;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+}
+
+
+
+.btn-custom-pagination ul.pagination {
+  margin: 0;
+  padding: 0;
+}
+
+.btn-custom-pagination ul.pagination li.page-item {
+  margin-right: 10px; /* Espacio entre elementos */
+  list-style: none; /* Elimina los puntos de lista */
+}
+
+.btn-custom-pagination ul.pagination li.page-item:last-child {
+  margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+.btn-custom-pagination ul.pagination li.page-item.active a.page-link,
+.btn-custom-pagination ul.pagination li.page-item a.page-link {
+  background-color: #D10024;
+  display: inline-block;
+  border-radius: 40px;
+
+  border: none;
+  color: #FFF;
+  font-weight: 700;
+  text-align: center;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+}
+
+.btn-custom-pagination ul.pagination li.page-item.disabled a.page-link {
+  background-color: #D10024;
+  border: none;
+  border-radius: 40px;
+  color: #FFF;
+
+  font-weight: 700;
+  text-align: center;
+}
+
+
 /*----------------------------*\
 	Logo
 \*----------------------------*/
@@ -469,7 +542,7 @@ textarea.input {
 \*----------------------------*/
 
 .header-search {
-  padding: 15px 0px;
+  padding: 15px 1px;
 }
 
 .header-search form {
@@ -482,13 +555,13 @@ textarea.input {
 }
 
 .header-search form .input {
-  width: calc(100% - 260px);
+  width: calc(90% - 260px);
   margin-right: -4px;
 }
 
 .header-search form .search-btn {
   height: 40px;
-  width: 70px;
+  width: 80px;
   background: #D10024;
   color: #FFF;
   font-weight: 700;
