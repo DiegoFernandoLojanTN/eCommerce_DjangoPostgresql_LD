@@ -70,10 +70,7 @@
 					<h3 class="title">Productos</h3>
 					<div class="section-nav">
 						<ul class="section-tab-nav tab-nav">
-							<li class="active"><a data-toggle="tab" href="#tab1">Computadoras</a></li>
-							<li><a data-toggle="tab" href="#tab1">Celulares</a></li>
-							<li><a data-toggle="tab" href="#tab1">Camaras</a></li>
-							<li><a data-toggle="tab" href="#tab1">Accesorios</a></li>
+							<li class="active"><a href="{% url 'store' %}">Ver Todo</a></li>
 						</ul>
 					</div>
 				</div>
@@ -97,7 +94,7 @@
 									</div>
 									<div class="product-body">
 										<p class="product-category">{{product.category}}</p>
-										<h3 class="product-name"><a href="#">{{product.product_name}}</a></h3>
+										<h3 class="product-name"><a href="{{ product.get_url }}">{{product.product_name}}</a></h3>
 										<h4 class="product-price">${{product.price}}</h4>
 										<div class="product-btns">
 											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
