@@ -2090,6 +2090,7 @@ textarea.input {
 #footer {
   background: #15161D;
   color: #B9BABC;
+  text-decoration: none;
 }
 
 #bottom-footer {
@@ -2109,10 +2110,12 @@ textarea.input {
 
 .footer-links li+li {
   margin-top: 15px;
+  text-decoration: none;
 }
 
 .footer-links li a {
   color: #B9BABC;
+  text-decoration: none;
 }
 
 .footer-links li i {
@@ -2120,10 +2123,12 @@ textarea.input {
   color: #D10024;
   width: 14px;
   text-align: center;
+  text-decoration: none;
 }
 
 .footer-links li a:hover {
   color: #D10024;
+  text-decoration: none;
 }
 
 .copyright {
