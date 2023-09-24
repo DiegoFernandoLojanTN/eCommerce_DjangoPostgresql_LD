@@ -348,24 +348,27 @@ textarea.input {
 
 .section-title .section-nav .section-tab-nav {
   display: inline-block;
-
 }
 
 .section-tab-nav li {
   display: inline-block;
   margin-right: 15px;
-
 }
 
 .section-tab-nav li:last-child {
   margin-right: 0px;
-
 }
 
 .section-tab-nav li a {
   font-weight: 700;
   color: #8d99ae;
   text-decoration: none;
+}
+
+/* Estilo para los botones al pasar el mouse por encima */
+.btn.btn-light.botonmas:hover {
+  background-color: #d10024;
+  color: white; /* Cambia el color del texto si lo deseas */
 }
 
 .section-tab-nav li a:after {
