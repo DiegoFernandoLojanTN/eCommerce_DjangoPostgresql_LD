@@ -71,7 +71,7 @@
                             {% if single_product.stock <= 0 %}
                                 <h5 style="text-align: center; color: #d10024;">Producto Fuera de Stock</h5>
                             {% else %}
-                                <a href="./product-detail.html" class="btn btn-success btn-block btn-custom-color mt-3 mb-3"
+                                <a href="{% url 'add_cart' single_product.id %}" class="btn btn-success btn-block btn-custom-color mt-3 mb-3"
                                 style="display: flex; justify-content: center; align-items: center;">
                                 <span class="text">Agregar al carrito de compras</span>
                                 <i class="fa fa-shopping-cart ml-2"></i>
