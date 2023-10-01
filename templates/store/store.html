@@ -125,35 +125,60 @@
 
                 <div class="row">
 
-                    {% for product in products %}
-                    <div class="col-md-4">
-                        <figure class="card card-product text-center"> <!-- Añadimos la clase text-center para centrar el contenido -->
-                            <div class="img-wrap">
-                                <a href="{{ product.get_url }}"><img src="{{ product.images.url }}" width="350" height="250" class="card-img-top"></a>
-                            </div> <!-- img-wrap.// -->
-                            <figcaption class="info-wrap">
-                                <div class="fix-height">
-                                    <a href="{{ product.get_url }}" class="title">{{product.product_name}}</a>
-                                    <div class="price-wrap mt-2">
-                                        <span class="price">${{product.price}}</span>
-                                    </div> <!-- price-wrap.// -->
-                                </div>
-                                <a href="{% url 'add_cart' product.id %}" class="btn btn-success btn-block btn-custom-color mt-3 mb-3">Agregar al Carrito</a> <!-- Añadimos un espacio superior (mt-3) y un margen inferior (mb-3) para separar el botón del contenido y del div de abajo -->
-                            </figcaption>
-                        </figure>
-                    </div> <!-- col.// -->
-                    {% endfor %}
+                    {% if products %}
+                        {% for product in products %}
+                        <div class="col-md-4">
+                            <figure class="card card-product text-center"> <!-- Añadimos la clase text-center para centrar el contenido -->
+                                <div class="img-wrap">
+                                    <a href="{{ product.get_url }}"><img src="{{ product.images.url }}" width="350" height="250" class="card-img-top"></a>
+                                </div> <!-- img-wrap.// -->
+                                <figcaption class="info-wrap">
+                                    <div class="fix-height">
+                                        <a href="{{ product.get_url }}" class="title">{{product.product_name}}</a>
+                                        <div class="price-wrap mt-2">
+                                            <span class="price">${{product.price}}</span>
+                                        </div> <!-- price-wrap.// -->
+                                    </div>
+                                    <a href="{% url 'add_cart' product.id %}" class="btn btn-success btn-block btn-custom-color mt-3 mb-3">Agregar al Carrito</a> <!-- Añadimos un espacio superior (mt-3) y un margen inferior (mb-3) para separar el botón del contenido y del div de abajo -->
+                                </figcaption>
+                            </figure>
+                        </div> <!-- col.// -->
+                        {% endfor %}
+                    {% else %}
+                        <div>
+                            <h2>No se encontraron resultados. Intente otra vez.</h2>
+                        </div>
+                    {% endif %}
 
                 </div> <!-- row end.// -->
 
                 <nav class="mt-4 btn-custom-pagination" aria-label="Page navigation sample">
+
+                    {% if products.has_other_pages %}
+
                     <ul class="pagination">
+                        {% if products.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?={{ products.previous_page_number }}">Anterior</a></li>
+                        {% else %}
                         <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+                        {% endif %}
+
+                        {% for i in products.paginator.page_range %}
+                            {% if products.number == i %}
+                                <li class="page-item active"><a class="page-link" href="#">{{i}}</a></li>
+                            {%  else %}
+                                <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if products.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{products.next_page_number}}">Siguiente</a></li>
+                        {% else %}
+                            <li class="page-item disabled"><a class="page-link" href="#">Siguiente</a></li>
+                        {% endif %}
                     </ul>
+
+                    {% endif %}
                 </nav>
 
 

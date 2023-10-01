@@ -37,7 +37,7 @@
                 <!-- SEARCH BAR -->
                 <div class="col-md-6">
                     <div class="header-search">
-                        <form>
+                        <form action="{% url 'search' %}">
                             <button class="dropdown-toggle input-select" type="button" >
                                 Todas las Categorias
                             </button>
@@ -46,7 +46,7 @@
                                 <a class="dropdown-item" href="{{ category.get_url }}">{{ category.category_name }}</a>
                                 {% endfor %}
                             </div>
-                            <input class="input" placeholder="Busca aquí">
+                            <input class="input" placeholder="Busca aquí" name="keyword">
                             <button class="search-btn">Buscar</button>
                         </form>
                     </div>
