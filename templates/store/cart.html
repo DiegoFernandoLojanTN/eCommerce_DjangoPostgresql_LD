@@ -46,12 +46,12 @@
                                     <td>
                                         <div class="col">
                                             <div class="input-group input-spinner">
-                                                <button class="btn btn-light botonmas" type="button" id="button-minus">
-                                                    <i class="fa fa-minus"></i> </button>
+                                                <a href="{% url 'remove_cart' cart_item.product.id %}" class="btn btn-light botonmas" type="button" id="button-minus">
+                                                    <i class="fa fa-minus"></i> </a>
                                                 <input type="text" class="form-control"
                                                     value="{{ cart_item.quantity }}">
-                                                <button class="btn btn-light botonmas" type="button" id="button-plus">
-                                                    <i class="fa fa-plus"></i> </button>
+                                                <a href="{% url 'add_cart' cart_item.product.id %}" class="btn btn-light botonmas" type="button" id="button-plus">
+                                                    <i class="fa fa-plus"></i> </a>
                                             </div>
                                         </div>
                                     </td>
@@ -62,7 +62,7 @@
                                         </div>
                                     </td>
                                     <td class="text-center">
-                                        <a href="" class="btn btn-danger btn-custom-color">Eliminar</a>
+                                        <a href="{% url 'remove_cart_item' cart_item.product.id %}" class="btn btn-danger btn-custom-color">Eliminar</a>
                                     </td>
                                 </tr>
                                 <!-- Agrega más filas aquí si es necesario -->
@@ -79,16 +79,16 @@
                 <div class="card">
                     <div class="card-body">
                         <dl class="row">
-                            <dt class="col-sm-6">Total price:</dt>
-                            <dd class="col-sm-6 text-end">$69.97</dd>
+                            <dt class="col-sm-6">Precio Total:</dt>
+                            <dd class="col-sm-6 text-end">${{ total }}</dd>
                         </dl>
                         <dl class="row">
-                            <dt class="col-sm-6">Tax:</dt>
-                            <dd class="col-sm-6 text-end">$10.00</dd>
+                            <dt class="col-sm-6">Impuestos:</dt>
+                            <dd class="col-sm-6 text-end">${{ tax }}</dd>
                         </dl>
                         <dl class="row">
                             <dt class="col-sm-6">Total:</dt>
-                            <dd class="col-sm-6 text-end text-dark b"><strong>$59.97</strong></dd>
+                            <dd class="col-sm-6 text-end text-dark b"><strong>${{ grand_total }}</strong></dd>
                         </dl>
                         <hr>
                         <p class="text-center mb-3">
