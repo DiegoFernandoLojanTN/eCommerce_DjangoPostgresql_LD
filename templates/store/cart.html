@@ -7,104 +7,115 @@
     <div class="container">
 
         <!-- ============================ COMPONENT 1 ================================= -->
+
+
         <br>
         <br>
-        <div class="row">
-            <aside class="col-lg-9">
-                <div class="card">
-                    <div class="table-responsive">
-                        <table class="table table-borderless table-shopping-cart">
-                            <thead class="text-muted">
-                                <tr class="small text-uppercase">
-                                    <th scope="col" width="40%">Producto</th>
-                                    <th scope="col" width="20%">Cantidad</th>
-                                    <th scope="col" width="25%">Precio</th>
-                                    <th scope="col" class="text-center" width="15%">Eliminar</th>
-                                </tr>
-                            </thead>
+        {% if not cart_items %}
+            <h2 style="color: #d10024; text-align: center;">El Carrito de Compras está Vacío</h2>
+            <br>
+            <div style="background-color: #ffffff; padding: 10px; text-align: center;">
+                <a href="{% url 'store' %}" style="color: #d10024;">Continúa Comprando</a>
+            </div>
+        
+        {%  else %}
+            <div class="row">
+                <aside class="col-lg-9">
+                    <div class="card">
+                        <div class="table-responsive">
+                            <table class="table table-borderless table-shopping-cart">
+                                <thead class="text-muted">
+                                    <tr class="small text-uppercase">
+                                        <th scope="col" width="40%">Producto</th>
+                                        <th scope="col" width="20%">Cantidad</th>
+                                        <th scope="col" width="25%">Precio</th>
+                                        <th scope="col" class="text-center" width="15%">Eliminar</th>
+                                    </tr>
+                                </thead>
 
-                            <tbody>
+                                <tbody>
 
-                                {% for cart_item in cart_items %}
+                                    {% for cart_item in cart_items %}
 
-                                <tr>
-                                    <td>
-                                        <figure class="itemside align-items-center">
-                                            <div class="aside" style="float: left; margin-right: 10px;">
-                                                <img src="{{ cart_item.product.images.url }}" class="img-lg" width="120"
-                                                    height="90">
+                                    <tr>
+                                        <td>
+                                            <figure class="itemside align-items-center">
+                                                <div class="aside" style="float: left; margin-right: 10px;">
+                                                    <img src="{{ cart_item.product.images.url }}" class="img-lg" width="120"
+                                                        height="90">
+                                                </div>
+                                                <figcaption class="info">
+                                                    <a href="{{ cart_item.product.get_url }}" class="title text-dark" style="text-decoration: none;">{{cart_item.product.product_name }}</a>
+                                                    <p class="text-muted small">Matrix: 25 Mpx <br> Marca: Canon</p>
+                                                </figcaption>
+                                                <div style="clear: both;"></div>
+                                                <!-- Limpiar el float para evitar problemas de diseño -->
+                                            </figure>
+
+                                        </td>
+                                        <td>
+                                            <div class="col">
+                                                <div class="input-group input-spinner">
+                                                    <a href="{% url 'remove_cart' cart_item.product.id %}" class="btn btn-light botonmas" type="button" id="button-minus">
+                                                        <i class="fa fa-minus"></i> </a>
+                                                    <input type="text" class="form-control"
+                                                        value="{{ cart_item.quantity }}">
+                                                    <a href="{% url 'add_cart' cart_item.product.id %}" class="btn btn-light botonmas" type="button" id="button-plus">
+                                                        <i class="fa fa-plus"></i> </a>
+                                                </div>
                                             </div>
-                                            <figcaption class="info">
-                                                <a href="#" class="title text-dark" style="text-decoration: none;">{{cart_item.product.product_name }}</a>
-                                                <p class="text-muted small">Matrix: 25 Mpx <br> Marca: Canon</p>
-                                            </figcaption>
-                                            <div style="clear: both;"></div>
-                                            <!-- Limpiar el float para evitar problemas de diseño -->
-                                        </figure>
-
-                                    </td>
-                                    <td>
-                                        <div class="col">
-                                            <div class="input-group input-spinner">
-                                                <a href="{% url 'remove_cart' cart_item.product.id %}" class="btn btn-light botonmas" type="button" id="button-minus">
-                                                    <i class="fa fa-minus"></i> </a>
-                                                <input type="text" class="form-control"
-                                                    value="{{ cart_item.quantity }}">
-                                                <a href="{% url 'add_cart' cart_item.product.id %}" class="btn btn-light botonmas" type="button" id="button-plus">
-                                                    <i class="fa fa-plus"></i> </a>
+                                        </td>
+                                        <td>
+                                            <div class="price-wrap">
+                                                <var class="price">${{ cart_item.sub_total }}</var>
+                                                <small class="text-muted"> - ${{ cart_item.product.price }} cada uno </small>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="price-wrap">
-                                            <var class="price">${{ cart_item.sub_total }}</var>
-                                            <small class="text-muted"> - ${{ cart_item.product.price }} cada uno </small>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="{% url 'remove_cart_item' cart_item.product.id %}" class="btn btn-danger btn-custom-color">Eliminar</a>
-                                    </td>
-                                </tr>
-                                <!-- Agrega más filas aquí si es necesario -->
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="{% url 'remove_cart_item' cart_item.product.id %}" class="btn btn-danger btn-custom-color">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                    <!-- Agrega más filas aquí si es necesario -->
 
-                                {% endfor %}
+                                    {% endfor %}
 
-                            </tbody>
-                        </table>
-                    </div> <!-- table-responsive.// -->
-                </div> <!-- card.// -->
+                                </tbody>
+                            </table>
+                        </div> <!-- table-responsive.// -->
+                    </div> <!-- card.// -->
 
-            </aside> <!-- col.// -->
-            <aside class="col-lg-3">
-                <div class="card">
-                    <div class="card-body">
-                        <dl class="row">
-                            <dt class="col-sm-6">Precio Total:</dt>
-                            <dd class="col-sm-6 text-end">${{ total }}</dd>
-                        </dl>
-                        <dl class="row">
-                            <dt class="col-sm-6">Impuestos:</dt>
-                            <dd class="col-sm-6 text-end">${{ tax }}</dd>
-                        </dl>
-                        <dl class="row">
-                            <dt class="col-sm-6">Total:</dt>
-                            <dd class="col-sm-6 text-end text-dark b"><strong>${{ grand_total }}</strong></dd>
-                        </dl>
-                        <hr>
-                        <p class="text-center mb-3">
-                            <img src="{% static './img/misc/payments.png' %}" height="26">
-                        </p>
-                        <a href="./place-order.html" class="btn btn-primary btn-block btn-custom-color"
-                            style="display: flex; justify-content: center; align-items: center;">Pagar</a>
-                        <br>
-                        <a href="./store.html" class=""
-                            style="display: flex; justify-content: center; align-items: center; text-decoration: none;">Continuar
-                            comprando</a>
-                    </div> <!-- card-body.// -->
-                </div> <!-- card.// -->
-            </aside> <!-- col.// -->
+                </aside> <!-- col.// -->
+                <aside class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <dl class="row">
+                                <dt class="col-sm-6">Precio Total:</dt>
+                                <dd class="col-sm-6 text-end">${{ total }}</dd>
+                            </dl>
+                            <dl class="row">
+                                <dt class="col-sm-6">Impuestos:</dt>
+                                <dd class="col-sm-6 text-end">${{ tax }}</dd>
+                            </dl>
+                            <dl class="row">
+                                <dt class="col-sm-6">Total:</dt>
+                                <dd class="col-sm-6 text-end text-dark b"><strong>${{ grand_total }}</strong></dd>
+                            </dl>
+                            <hr>
+                            <p class="text-center mb-3">
+                                <img src="{% static './img/misc/payments.png' %}" height="26">
+                            </p>
+                            <a href="./place-order.html" class="btn btn-primary btn-block btn-custom-color"
+                                style="display: flex; justify-content: center; align-items: center;">Pagar</a>
+                            <br>
+                            <a href="{% url 'store' %}" class=""
+                                style="display: flex; justify-content: center; align-items: center; text-decoration: none;">Continuar
+                                comprando</a>
+                        </div> <!-- card-body.// -->
+                    </div> <!-- card.// -->
+                </aside> <!-- col.// -->
 
-        </div> <!-- row.// -->
+            </div> <!-- row.// -->
+        {% endif %}
         <!-- ============================ COMPONENT 1 END .// ================================= -->
     </div> <!-- container .//  -->
     <br>

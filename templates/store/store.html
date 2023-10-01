@@ -138,7 +138,7 @@
                                         <span class="price">${{product.price}}</span>
                                     </div> <!-- price-wrap.// -->
                                 </div>
-                                <a href="#" class="btn btn-success btn-block btn-custom-color mt-3 mb-3">Agregar al Carrito</a> <!-- Añadimos un espacio superior (mt-3) y un margen inferior (mb-3) para separar el botón del contenido y del div de abajo -->
+                                <a href="{% url 'add_cart' product.id %}" class="btn btn-success btn-block btn-custom-color mt-3 mb-3">Agregar al Carrito</a> <!-- Añadimos un espacio superior (mt-3) y un margen inferior (mb-3) para separar el botón del contenido y del div de abajo -->
                             </figcaption>
                         </figure>
                     </div> <!-- col.// -->

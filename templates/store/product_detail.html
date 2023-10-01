@@ -71,11 +71,26 @@
                             {% if single_product.stock <= 0 %}
                                 <h5 style="text-align: center; color: #d10024;">Producto Fuera de Stock</h5>
                             {% else %}
-                                <a href="{% url 'add_cart' single_product.id %}" class="btn btn-success btn-block btn-custom-color mt-3 mb-3"
-                                style="display: flex; justify-content: center; align-items: center;">
-                                <span class="text">Agregar al carrito de compras</span>
-                                <i class="fa fa-shopping-cart ml-2"></i>
-                                </a>
+                                {% if in_cart %}
+                                    <a href="#" class="btn btn-success btn-block btn-custom-color mt-3 mb-3"
+                                    style="display: flex; justify-content: center; align-items: center;">
+                                    <span class="text">Producto ya agregado</span>
+                                    <i class="fa fa-check ml-2"></i>
+                                    </a>
+
+                                    <a href="{% url 'cart'  %}" class="btn btn-success btn-block btn-custom-color mt-3 mb-3"
+                                    style="display: flex; justify-content: center; align-items: center;">
+                                    <span class="text">Ver Carrito</span>
+                                    <i class="fa fa-eye ml-2"></i>
+                                    </a>
+
+                                {% else %}
+                                    <a href="{% url 'add_cart' single_product.id %}" class="btn btn-success btn-block btn-custom-color mt-3 mb-3"
+                                    style="display: flex; justify-content: center; align-items: center;">
+                                    <span class="text">Agregar al carrito de compras</span>
+                                    <i class="fa fa-shopping-cart ml-2"></i>
+                                    </a>
+                                {% endif %}
                             {% endif %}
 
 
